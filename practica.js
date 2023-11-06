@@ -1,5 +1,6 @@
 let str = "the-stealth_warrior";
 
+//Convertir la primera letra de cada palabra en mayúscula
 function toCamelCase(str){
     if(str.length === 0){
         return str;
@@ -8,7 +9,6 @@ function toCamelCase(str){
     for(let i = 1; i < wordsArray.length; i++){
         wordsArray[i] = wordsArray[i].charAt(0).toUpperCase() + wordsArray[i].slice(1);
     }
-    console.log(wordsArray.join(""));
     return wordsArray.join("");
 }
 
@@ -16,6 +16,7 @@ toCamelCase(str);
 
 //====================================================================================================
 
+//Función para saber si un número es narcissistico (o sea, un número que es igual a la suma de la potencia de cada número del número)
 let value = 153;
 function narcissistic(value) {
     // Code me to return true or false
@@ -40,3 +41,80 @@ function narcissistic(value) {
   }
 
 narcissistic(value);
+
+
+//====================================================================================================
+
+//Función para separar los liquidos de una vaso
+
+let densityChart = {
+    'H': 1.36,
+    'W': 1.00,
+    'A': 0.87,
+    'O': 0.80
+}
+let glass = [['H', 'H', 'W', 'O'],['W','W','O','W'],['H','H','O','O']]
+
+function separateLiquids(glass) {
+    let newGlass = [];
+    for(let i = 0; i < glass.length; i++){
+        for(let j = 0; j < glass[i].length; j++){
+            newGlass.push(glass[i][j]);
+        }
+    }
+
+    let sortedGlass = newGlass.map(letter => densityChart[letter]).sort();
+    
+    for(let i = 0; i < sortedGlass.length; i++){
+        sortedGlass[i] = Object.keys(densityChart).find(key => densityChart[key] === sortedGlass[i]);
+    }
+
+    for(let i = 0; i < glass.length; i++){
+        for(let j = 0; j < glass[i].length; j++){
+            glass[i][j] = sortedGlass.shift();
+        }
+    }
+
+    return glass;
+  }
+
+  separateLiquids(glass);
+
+//====================================================================================================
+
+//Función para saber si un número es un cuadrado
+
+let n = 3;
+let isSquare = function(n){
+    if(n < 0){
+      return false;
+    } else if(n === 0){
+      return true;
+    } else if(Math.sqrt(n) % 1 === 0){
+      return true;
+    } else {
+      return false;
+    }
+}
+
+  isSquare(n);
+
+//====================================================================================================
+
+let string = "abcdf";
+
+function solution(string) {
+    let strArr = string.split("");
+    let result = [];
+
+    for(let i = 0; i < strArr.length; i+=2){
+        if(strArr[i + 1]) {
+            result.push(strArr[i] + strArr[i + 1]);
+        } else {
+            result.push(strArr[i] + "_");
+        }
+    }
+    return result;
+}
+
+solution(string);
