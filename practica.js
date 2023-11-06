@@ -101,7 +101,9 @@ let isSquare = function(n){
 
 //====================================================================================================
 
-let string = "abcdf";
+//Funcion para separar string en pares de letras
+
+let string = "abcdfgre";
 
 function solution(string) {
     let strArr = string.split("");
@@ -118,3 +120,27 @@ function solution(string) {
 }
 
 solution(string);
+
+//====================================================================================================
+
+//Funcion para generar un hashtag a partir de un string
+
+let string2 = "las abejas son lindas"
+
+function generateHashtag (string2) {
+    if(string2.length === 0 || string2 === "#" || string2.trim() === " "){
+      return false;
+    }
+    let newStr = string2.split(" ");
+    for(let i = 0; i < newStr.length; i++){
+        newStr[i] = newStr[i].charAt(0).toUpperCase() + newStr[i].slice(1);
+    }
+    newStr.unshift("#");
+    let finalResult = newStr.join("")
+    if(finalResult.length > 140){
+        return false;
+    }
+    return finalResult;
+}
+
+generateHashtag(string2);
