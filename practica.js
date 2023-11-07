@@ -144,3 +144,19 @@ function generateHashtag (string2) {
 }
 
 generateHashtag(string2);
+
+//====================================================================================================
+
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+function createPhoneNumber(numbers){
+    let newNum = "(xxx) xxx-xxxx";
+    
+    for(let i = 0; i < numbers.length; i++){
+      newNum = newNum.replace("x", numbers[i]);
+    }
+    
+    return newNum;
+  }
+  
+  createPhoneNumber(numbers);
